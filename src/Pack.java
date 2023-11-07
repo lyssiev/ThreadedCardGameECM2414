@@ -20,4 +20,19 @@ public class Pack {
             System.out.println("File not found.");
         }
     }
+
+    public ArrayList<Card> getCards() {
+        return cards;
+    }
+
+    private void shuffle()
+    {
+        for (int i = cards.size() - 1; i > 0; i--)
+        {
+            double j = Math.floor(Math.random() * (i+1));
+            Card temp = cards.get(i);
+            cards.set(i, cards.get((int)j));
+            cards.set((int)j, temp);
+        }
+    }
 }
