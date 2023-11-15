@@ -4,7 +4,7 @@ import java.io.FileNotFoundException;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 public class Pack {
-    private ArrayList<Card> cards;
+    private ArrayList<Card> cards = new ArrayList<Card>();
 
     public Pack(int n) {
         Boolean valid = false;
@@ -21,7 +21,7 @@ public class Pack {
                     while (scanner.hasNextLine()) {
                         int value = Integer.parseInt(scanner.nextLine());
                         Card card = new Card(value);
-                        this.cards.add(card);
+                        cards.add(card);
 
                     }
                 } catch (InputMismatchException e) {

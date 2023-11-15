@@ -5,20 +5,23 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Player {
+public class Player extends Thread {
 
+    private volatile boolean done = false;
     private int name;
-    private ArrayList<Card> hand;
+    private ArrayList<Card> hand = new ArrayList<Card>();;
     private Deck drawDeck;
     private Deck dropDeck;
     private String actionLogFilename;
-    private ArrayList<Card> discardList;
+    private final boolean[] flags;
+    private ArrayList<Card> discardList = new ArrayList<Card>();;
 
 
-    public Player(int name, Deck drawDeck, Deck dropDeck){
+    public Player(int name, Deck drawDeck, Deck dropDeck, boolean[] flags){
         this.name = name;
         this.drawDeck = drawDeck;
         this.dropDeck = dropDeck;
+        this.flags = flags;
 
         actionLogFilename = "player"+ (Integer.toString(name)) + "_output.txt";
     }
@@ -37,12 +40,21 @@ public class Player {
         if (card.getValue() != this.name){
             discardList.add(card);
         }
+        if (hand.size() == 4)
+        {
+            String currentHand = "player "+(Integer.toString(name)+" initial hand: ");
+            for (Card handCard : hand){
+                currentHand += Integer.toString(handCard.getValue()) + " ";
+            }
+
+            writeToLog(currentHand, false);
+        }
     }
 
-    public void writeToLog(String message){
+    public void writeToLog(String message, Boolean append){
         try {
-            FileWriter writer = new FileWriter(actionLogFilename);
-            writer.write(message);
+            FileWriter writer = new FileWriter(actionLogFilename, append);
+            writer.write(message + "\n");
             writer.close();
         } catch (IOException e) {
             System.out.println("Error.");
@@ -63,37 +75,76 @@ public class Player {
         double i = Math.floor(Math.random() * discardList.size());
         return discardList.get((int) i);
     }
-    public void takeTurn(){
-        Card discardedCard = getDiscardedCard();
-        dropDeck.addCard(discardedCard);
-        hand.remove(discardedCard);
-        discardList.remove(discardedCard);
-        String discardMessage = "player "+(Integer.toString(name))+" discards a "+ (Integer.toString(discardedCard.getValue())) +" to deck " +dropDeck.getName();
+    public synchronized void run(){
+        while(!done)
+        {
+            Card discardedCard = getDiscardedCard();
+            dropDeck.addCard(discardedCard);
+            notifyAll();
+            dropDeck.writeToLog();
+            hand.remove(discardedCard);
 
-        Card newCard = drawDeck.getCard(0);
-        drawDeck.removeCard(0);
-        hand.add(newCard);
-        if (newCard.getValue() != name){
-            discardList.add(newCard);
+            if (discardList.size() != 0)
+            {
+                discardList.remove(discardedCard);
+            }
+
+            String discardMessage = "player "+(Integer.toString(name))+" discards a "+ (Integer.toString(discardedCard.getValue())) +" to deck " +dropDeck.getName();
+
+            Card newCard = null;
+            while (newCard == null)
+            {
+                try
+                {
+                    newCard = drawDeck.getCard(0);
+                    drawDeck.removeCard(0);
+                    hand.add(newCard);
+                    if (newCard.getValue() != name){
+                        discardList.add(newCard);
+                    }
+                } catch (IndexOutOfBoundsException a)
+                {
+                    try {
+                        wait();
+                    } catch (InterruptedException e) {
+                        throw new RuntimeException(e);
+                    }
+                }
+            }
+
+
+            String drawMessage = "player "+(Integer.toString(name))+" draws a "+ (Integer.toString(newCard.getValue())) +" from deck " +drawDeck.getName();
+
+            writeToLog(drawMessage, true);
+            writeToLog(discardMessage, true);
+
+            if (checkWin())
+            {
+                flags[name-1] = true;
+                break;
+            }
+
+            String currentHand = "player "+(Integer.toString(name)+" hand: ");
+            for (Card card : hand){
+                currentHand += Integer.toString(card.getValue()) + " ";
+            }
+
+            writeToLog(currentHand, true);
         }
-        String drawMessage = "player "+(Integer.toString(name))+" draws a "+ (Integer.toString(newCard.getValue())) +" from deck " +drawDeck.getName();
+    }
 
-        writeToLog(drawMessage);
-        writeToLog(discardMessage);
+    public void stopThread(int PlayerNameWon)
+    {
+        writeToLog("player "+(Integer.toString(PlayerNameWon))+" wins", true);
+        writeToLog("player "+(Integer.toString(name))+" exits", true);
 
-        if (checkWin()){
-            writeToLog("player "+(Integer.toString(name))+" wins");
-            writeToLog("player "+(Integer.toString(name))+" exits");
-            //NOTIFY OTHER PLAYERS + CHECK OTHER PLAYER WINS
-
-        }
-
-        String currentHand = "player "+(Integer.toString(name)+" hand: ");
+        String currentHand = "player "+(Integer.toString(name)+" final hand: ");
         for (Card card : hand){
             currentHand += Integer.toString(card.getValue()) + " ";
         }
 
-        writeToLog(currentHand);
-
+        writeToLog(currentHand, true);
+        this.done = true;
     }
+
 }
