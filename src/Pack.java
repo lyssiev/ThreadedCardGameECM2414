@@ -39,6 +39,7 @@ public class Pack {
                 valid = true;
             }
         }
+        this.shuffle();
     }
 
     public ArrayList<Card> getCards() {

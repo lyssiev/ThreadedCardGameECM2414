@@ -5,8 +5,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-
-
 public class Player {
 
     private int name;
@@ -17,21 +15,13 @@ public class Player {
     private ArrayList<Card> discardList;
 
 
-    public Player(int name, ArrayList<Card> hand, Deck drawDeck, Deck dropDeck){
+    public Player(int name, Deck drawDeck, Deck dropDeck){
         this.name = name;
-        this.hand = hand;
         this.drawDeck = drawDeck;
         this.dropDeck = dropDeck;
 
-        for (Card card : this.hand){
-            if (card.getValue() != this.name){
-                discardList.add(card);
-            }
-        }
         actionLogFilename = "player"+ (Integer.toString(name)) + "_output.txt";
     }
-
-
 
     public Deck getDrawDeck(){
         return drawDeck;
@@ -39,6 +29,14 @@ public class Player {
 
     public Deck getDropDeck(){
         return dropDeck;
+    }
+
+    public void addCardToHand(Card card)
+    {
+        hand.add(card);
+        if (card.getValue() != this.name){
+            discardList.add(card);
+        }
     }
 
     public void writeToLog(String message){
@@ -66,7 +64,6 @@ public class Player {
         return discardList.get((int) i);
     }
     public void takeTurn(){
-
         Card discardedCard = getDiscardedCard();
         dropDeck.addCard(discardedCard);
         hand.remove(discardedCard);
