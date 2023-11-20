@@ -140,12 +140,6 @@ public class CardGame {
                 counter = 0;
             }
         }
-
-
-        for (Deck deck : decks)
-        {
-            deck.writeToLog();
-        }
     }
 }
 
