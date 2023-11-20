@@ -22,7 +22,7 @@ public class Deck{
         return cards;
     }
 
-    public void addCard(Card card)
+    public synchronized void addCard(Card card)
     {
         this.cards.add(card);
     }
@@ -32,18 +32,18 @@ public class Deck{
         return cards.size();
     }
 
-    public void removeCard(int index)
+    public synchronized void removeCard(int index)
     {
         cards.remove(index);
     }
 
-    public Card getCard(int index){
+    public synchronized Card getCard(int index){
         return cards.get(index);
     }
 
     public void writeToLog(){
         try {
-            FileWriter writer = new FileWriter(deckLogFilename, true);
+            FileWriter writer = new FileWriter(deckLogFilename, false);
             String message = "Deck "+ name + " contents: ";
             for (Card deckCard : cards){
                 message += Integer.toString(deckCard.getValue()) + " ";

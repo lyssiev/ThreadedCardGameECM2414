@@ -26,15 +26,15 @@ public class Player extends Thread {
         actionLogFilename = "player"+ (Integer.toString(name)) + "_output.txt";
     }
 
-    public Deck getDrawDeck(){
+    public synchronized Deck getDrawDeck(){
         return drawDeck;
     }
 
-    public Deck getDropDeck(){
+    public synchronized Deck getDropDeck(){
         return dropDeck;
     }
 
-    public void addCardToHand(Card card)
+    public synchronized void addCardToHand(Card card)
     {
         hand.add(card);
         if (card.getValue() != this.name){
@@ -61,7 +61,7 @@ public class Player extends Thread {
         }
     }
 
-    public Boolean checkWin(){
+    public synchronized Boolean checkWin(){
         int value = hand.get(0).getValue();
         for (Card card : hand){
             if (value != card.getValue()){
@@ -71,7 +71,7 @@ public class Player extends Thread {
         return true;
     }
 
-    public Card getDiscardedCard(){
+    public synchronized Card getDiscardedCard(){
         double i = Math.floor(Math.random() * discardList.size());
         return discardList.get((int) i);
     }
@@ -81,7 +81,7 @@ public class Player extends Thread {
             Card discardedCard = getDiscardedCard();
             dropDeck.addCard(discardedCard);
             notifyAll();
-            dropDeck.writeToLog();
+            //dropDeck.writeToLog();
             hand.remove(discardedCard);
 
             if (discardList.size() != 0)

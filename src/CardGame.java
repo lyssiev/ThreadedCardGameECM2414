@@ -118,7 +118,8 @@ public class CardGame {
         int counter = 0;
         for (int i=0; i < (numberOfPlayers * 4) ; i++ )
         {
-            players.get(counter).addCardToHand(pack.get(i));
+            players.get(counter).addCardToHand(pack.get(1));
+            pack.remove(pack.get(1));
             counter++;
             if (counter == numberOfPlayers)
             {
@@ -138,6 +139,12 @@ public class CardGame {
             {
                 counter = 0;
             }
+        }
+
+
+        for (Deck deck : decks)
+        {
+            deck.writeToLog();
         }
     }
 }
