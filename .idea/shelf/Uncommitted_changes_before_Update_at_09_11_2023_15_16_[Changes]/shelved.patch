@@ -1,0 +1,17 @@
+Index: src/Hand.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>\r\nimport java.util.ArrayList;\r\npublic class Hand {\r\n    private ArrayList<Card> cards;\r\n    public Hand()\r\n    {\r\n        this.cards = new ArrayList<Card>();\r\n    }\r\n\r\n    public ArrayList<Card> getHand()\r\n    {\r\n        return cards;\r\n    }\r\n\r\n    public void addCard(Card card)\r\n    {\r\n        this.cards.add(card);\r\n    }\r\n\r\n    public int getNumberOfCards()\r\n    {\r\n        return cards.size();\r\n    }\r\n\r\n    public void removeCard(Card card)\r\n    {\r\n        this.cards.remove(card);\r\n    }\r\n\r\n}\r\n\r\n
+===================================================================
+diff --git a/src/Hand.java b/src/Hand.java
+--- a/src/Hand.java	
++++ b/src/Hand.java	
+@@ -1,7 +1,7 @@
+ 
+ import java.util.ArrayList;
+ public class Hand {
+-    private ArrayList<Card> cards;
++
+     public Hand()
+     {
+         this.cards = new ArrayList<Card>();
