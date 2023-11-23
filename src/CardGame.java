@@ -1,4 +1,7 @@
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class CardGame {
@@ -63,9 +66,43 @@ public class CardGame {
             }
         }
 
+        valid = false;
+        ArrayList<Card> cardList = new ArrayList<Card>();
+
+        while (!valid) {
+            Scanner scanner1 = new Scanner(System.in);
+            System.out.println("Please enter location of pack to load: ");
+            String fileName = scanner1.nextLine();
+
+            try {
+                File packFile = new File(fileName);
+                Scanner scanner = new Scanner(packFile);
+                try {
+                    while (scanner.hasNextLine()) {
+                        int value = Integer.parseInt(scanner.nextLine());
+                        Card card = new Card(value);
+                        cardList.add(card);
+
+                    }
+                } catch (InputMismatchException e) {
+                    System.out.println("Invalid file.");
+                }
+                scanner.close();
+            } catch (FileNotFoundException e) {
+                System.out.println("File not found.");
+            }
+
+            if (cardList.size() != 8 * numberOfPlayers) {
+                System.out.println("Invalid file.");
+                cardList.clear();
+            } else {
+                valid = true;
+            }
+        }
+
         flags = new boolean[numberOfPlayers];
 
-        Pack packObject = new Pack(numberOfPlayers);
+        Pack packObject = new Pack(numberOfPlayers, cardList);
         pack = packObject.getCards();
 
         makeDecks();

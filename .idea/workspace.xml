@@ -4,12 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5ec88d47-e3d9-4cdf-9870-1fcf2f9203a5" name="Changes" comment="added threading and made card game">
+    <list default="true" id="5ec88d47-e3d9-4cdf-9870-1fcf2f9203a5" name="Changes" comment="Player + other updates">
+      <change afterPath="$PROJECT_DIR$/src/CardGameTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/CardTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/DeckTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/PackTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/PlayerTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Card.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Card.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/CardGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CardGame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Deck.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Deck.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Pack.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Pack.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,7 +34,9 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="2XrOJ4XP4bUgmoy3RHgmS07R6i8" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
