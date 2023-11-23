@@ -27,11 +27,6 @@ public class Deck{
         this.cards.add(card);
     }
 
-    public int getNumberOfCards()
-    {
-        return cards.size();
-    }
-
     public synchronized void removeCard(int index)
     {
         cards.remove(index);
