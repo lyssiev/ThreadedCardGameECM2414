@@ -7,7 +7,6 @@ import java.util.Scanner;
 
 public class Player extends Thread {
 
-    //define attributes
     private volatile boolean done = false;
     private int name;
     private ArrayList<Card> hand = new ArrayList<Card>();;
@@ -15,32 +14,16 @@ public class Player extends Thread {
     private Deck dropDeck;
     private String actionLogFilename;
     private final boolean[] flags;
-    private ArrayList<Card> discardList = new ArrayList<Card>(); //discard list contains all cards that the player wants to drop - none that have the same name as them
+    private ArrayList<Card> discardList = new ArrayList<Card>();;
 
 
     public Player(int name, Deck drawDeck, Deck dropDeck, boolean[] flags){
-
-        //constructor
         this.name = name;
         this.drawDeck = drawDeck;
         this.dropDeck = dropDeck;
         this.flags = flags;
 
-        //creates file name for player actions to be written to
         actionLogFilename = "player"+ (Integer.toString(name)) + "_output.txt";
-    }
-
-    public ArrayList<Card> getHand() {
-        return hand;
-    }
-
-    public ArrayList<Card> getDiscardList() {
-        return discardList;
-    }
-
-
-    public int getPlayerName() {
-        return name;
     }
 
     public synchronized Deck getDrawDeck(){
@@ -55,16 +38,16 @@ public class Player extends Thread {
     {
         hand.add(card);
         if (card.getValue() != this.name){
-            discardList.add(card); //as the player never gets rid of a card with the same value as their name, only other cards are added to the discard list
+            discardList.add(card);
         }
-        if (hand.size() == 4)  //once hand is full
+        if (hand.size() == 4)
         {
             String currentHand = "player "+(Integer.toString(name)+" initial hand: ");
             for (Card handCard : hand){
                 currentHand += Integer.toString(handCard.getValue()) + " ";
             }
 
-            writeToLog(currentHand, false); //output initial hand to log and overwrite anything from previous games
+            writeToLog(currentHand, false);
         }
     }
 
@@ -74,38 +57,34 @@ public class Player extends Thread {
             writer.write(message + "\n");
             writer.close();
         } catch (IOException e) {
-            System.out.println("Error."); //catch IO exceptions
+            System.out.println("Error.");
         }
     }
 
     public synchronized Boolean checkWin(){
-        int value = hand.get(0).getValue(); //checks all cards are the same as the first card
+        int value = hand.get(0).getValue();
         for (Card card : hand){
             if (value != card.getValue()){
                 return false;
             }
         }
-        return true; //returns true if they are as the player has won
+        return true;
     }
 
     public synchronized Card getDiscardedCard(){
-        double i = Math.floor(Math.random() * discardList.size()); //picks a random card from the discard list
+        double i = Math.floor(Math.random() * discardList.size());
         return discardList.get((int) i);
     }
-
-    public String getActionLogFilename() {
-        return actionLogFilename;
-    }
-
     public synchronized void run(){
         while(!done)
         {
             Card discardedCard = getDiscardedCard();
-            dropDeck.addCard(discardedCard); // add discarded card to the next deck
-            notifyAll(); // Notify all waiting threads that the state has changed
+            dropDeck.addCard(discardedCard);
+            notifyAll();
+            //dropDeck.writeToLog();
+            hand.remove(discardedCard);
 
-
-            if (discardList.size() != 0) // make sure doesn't discard if there are no cards to discard
+            if (discardList.size() != 0)
             {
                 discardList.remove(discardedCard);
             }
@@ -113,7 +92,7 @@ public class Player extends Thread {
             String discardMessage = "player "+(Integer.toString(name))+" discards a "+ (Integer.toString(discardedCard.getValue())) +" to deck " +dropDeck.getName();
 
             Card newCard = null;
-            while (newCard == null) // wait until the draw deck isn't empty
+            while (newCard == null)
             {
                 try
                 {
@@ -121,14 +100,14 @@ public class Player extends Thread {
                     drawDeck.removeCard(0);
                     hand.add(newCard);
                     if (newCard.getValue() != name){
-                        discardList.add(newCard); // add to discard list if not same as player name
+                        discardList.add(newCard);
                     }
-                } catch (IndexOutOfBoundsException a) // Catch if the draw deck is empty
+                } catch (IndexOutOfBoundsException a)
                 {
                     try {
                         wait();
                     } catch (InterruptedException e) {
-                        throw new RuntimeException(e); // Throw a runtime exception if the thread is interrupted while waiting
+                        throw new RuntimeException(e);
                     }
                 }
             }
@@ -136,18 +115,15 @@ public class Player extends Thread {
 
             String drawMessage = "player "+(Integer.toString(name))+" draws a "+ (Integer.toString(newCard.getValue())) +" from deck " +drawDeck.getName();
 
-            //add actions to log
             writeToLog(drawMessage, true);
             writeToLog(discardMessage, true);
 
-            //if the thread has won, change the flag array
             if (checkWin())
             {
                 flags[name-1] = true;
                 break;
             }
 
-            // add updated hand to log
             String currentHand = "player "+(Integer.toString(name)+" hand: ");
             for (Card card : hand){
                 currentHand += Integer.toString(card.getValue()) + " ";
@@ -159,7 +135,6 @@ public class Player extends Thread {
 
     public void stopThread(int PlayerNameWon)
     {
-        // write final messages to log
         writeToLog("player "+(Integer.toString(PlayerNameWon))+" wins", true);
         writeToLog("player "+(Integer.toString(name))+" exits", true);
 
@@ -169,7 +144,23 @@ public class Player extends Thread {
         }
 
         writeToLog(currentHand, true);
-        this.done = true; // update done so thread stops running
+        this.done = true;
     }
 
+    public ArrayList<Card> getHand() {
+        return hand;
+    }
+
+    public String getActionLogFilename() {
+        return actionLogFilename;
+    }
+
+    public int getPlayerName()
+    {
+        return name;
+    }
+
+    public ArrayList<Card> getDiscardList() {
+        return discardList;
+    }
 }
