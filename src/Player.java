@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Player extends Thread {
-
     private volatile boolean done = false;
     private int name;
     private ArrayList<Card> hand = new ArrayList<Card>();;
@@ -24,6 +23,19 @@ public class Player extends Thread {
         this.flags = flags;
 
         actionLogFilename = "player"+ (Integer.toString(name)) + "_output.txt";
+    }
+
+    public ArrayList<Card> getHand() {
+        return hand;
+    }
+
+    public ArrayList<Card> getDiscardList() {
+        return discardList;
+    }
+
+
+    public int getPlayerName() {
+        return name;
     }
 
     public synchronized Deck getDrawDeck(){
@@ -62,7 +74,7 @@ public class Player extends Thread {
     }
 
     public synchronized Boolean checkWin(){
-        int value = hand.get(0).getValue();
+        int value = hand.get(0).getValue(); //should this not be player name?
         for (Card card : hand){
             if (value != card.getValue()){
                 return false;
@@ -75,6 +87,11 @@ public class Player extends Thread {
         double i = Math.floor(Math.random() * discardList.size());
         return discardList.get((int) i);
     }
+
+    public String getActionLogFilename() {
+        return actionLogFilename;
+    }
+
     public synchronized void run(){
         while(!done)
         {

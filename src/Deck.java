@@ -3,6 +3,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class Deck{
+
     private ArrayList<Card> cards;
     private String name;
     private String deckLogFilename;
