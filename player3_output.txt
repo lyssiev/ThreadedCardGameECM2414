@@ -1,60 +1,37 @@
-player 3 initial hand: 3 1 4 6 
-player 3 draws a 4 from deck 3
-player 3 discards a 1 to deck 1
-player 3 hand: 3 4 6 4 
-player 3 draws a 1 from deck 3
-player 3 discards a 4 to deck 1
-player 3 hand: 3 4 6 1 
+player 3 initial hand: 5 6 3 4 
 player 3 draws a 6 from deck 3
 player 3 discards a 6 to deck 1
-player 3 hand: 3 4 1 6 
-player 3 draws a 2 from deck 3
-player 3 discards a 6 to deck 1
-player 3 hand: 3 4 1 2 
-player 3 draws a 5 from deck 3
-player 3 discards a 2 to deck 1
-player 3 hand: 3 4 1 5 
-player 3 draws a 6 from deck 3
-player 3 discards a 1 to deck 1
-player 3 hand: 3 4 5 6 
-player 3 draws a 1 from deck 3
-player 3 discards a 6 to deck 1
-player 3 hand: 3 4 5 1 
-player 3 draws a 1 from deck 3
-player 3 discards a 1 to deck 1
-player 3 hand: 3 4 5 1 
-player 3 draws a 5 from deck 3
-player 3 discards a 1 to deck 1
-player 3 hand: 3 4 5 5 
-player 3 draws a 3 from deck 3
-player 3 discards a 5 to deck 1
-player 3 hand: 3 4 5 3 
-player 3 draws a 6 from deck 3
-player 3 discards a 4 to deck 1
-player 3 hand: 3 5 3 6 
-player 3 draws a 5 from deck 3
-player 3 discards a 5 to deck 1
-player 3 hand: 3 3 6 5 
-player 3 draws a 4 from deck 3
-player 3 discards a 5 to deck 1
-player 3 hand: 3 3 6 4 
-player 3 draws a 5 from deck 3
-player 3 discards a 4 to deck 1
-player 3 hand: 3 3 6 5 
-player 3 draws a 4 from deck 3
-player 3 discards a 5 to deck 1
-player 3 hand: 3 3 6 4 
-player 3 draws a 4 from deck 3
-player 3 discards a 4 to deck 1
-player 3 hand: 3 3 6 4 
+player 3 hand: 5 3 4 6 
 player 3 draws a 3 from deck 3
 player 3 discards a 4 to deck 1
+player 3 hand: 5 3 6 3 
+player 3 draws a 5 from deck 3
+player 3 discards a 5 to deck 1
+player 3 hand: 3 6 3 5 
+player 3 draws a 6 from deck 3
+player 3 discards a 5 to deck 1
+player 3 hand: 3 6 3 6 
+player 3 draws a 1 from deck 3
+player 3 discards a 6 to deck 1
+player 3 hand: 3 3 6 1 
+player 3 draws a 1 from deck 3
+player 3 discards a 1 to deck 1
+player 3 hand: 3 3 6 1 
+player 3 draws a 4 from deck 3
+player 3 discards a 6 to deck 1
+player 3 hand: 3 3 1 4 
+player 3 draws a 5 from deck 3
+player 3 discards a 4 to deck 1
+player 3 hand: 3 3 1 5 
+player 3 draws a 5 from deck 3
+player 3 discards a 5 to deck 1
+player 3 hand: 3 3 1 5 
+player 3 draws a 6 from deck 3
+player 3 discards a 5 to deck 1
+player 3 hand: 3 3 1 6 
+player 3 draws a 3 from deck 3
+player 3 discards a 1 to deck 1
 player 3 hand: 3 3 6 3 
-player 3 draws a 6 from deck 3
-player 3 discards a 6 to deck 1
-player 3 hand: 3 3 3 6 
-player 3 draws a 3 from deck 3
-player 3 discards a 6 to deck 1
 player 1 wins
 player 3 exits
-player 3 final hand: 3 3 3 3 
+player 3 final hand: 3 3 3 

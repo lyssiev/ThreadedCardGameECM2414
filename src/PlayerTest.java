@@ -2,9 +2,7 @@ import org.junit.jupiter.api.Test;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.lang.reflect.*;
 import java.util.ArrayList;
-import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -12,14 +10,95 @@ import static org.junit.jupiter.api.Assertions.*;
 class PlayerTest {
 
     @Test
+    void Player()
+    {
+
+    }
+
+    @Test
+    void run() throws FileNotFoundException, InterruptedException {
+        //set up pack
+        ArrayList<Card> testPack = new ArrayList<Card>();
+        File packFile = new File("pack1.txt");
+        Scanner scanner = new Scanner(packFile);
+        while (scanner.hasNextLine()) {
+            int value = Integer.parseInt(scanner.nextLine());
+            Card card = new Card(value);
+            testPack.add(card);
+        }
+        scanner.close();
+
+        Pack packObject = new Pack(2, testPack);
+        testPack = packObject.getCards(); //making sure cards are shuffled
+
+        //set up players
+        boolean[] flags = {false, false, false};
+
+        Deck Deck1 = new Deck("1");
+        Deck Deck2 = new Deck("2");
+        Deck Deck3 = new Deck("2");
+
+        Player testPlayer1 = new Player(1, Deck1, Deck2, flags);
+        Player testPlayer2 = new Player(2, Deck2, Deck3, flags);
+        Player testPlayer3= new Player(2, Deck3, Deck1, flags);
+
+        // adding cards from pack to players and decks
+        for (int i = 0; i < testPack.size(); i += 6) {
+            Card card1 = testPack.get(i);
+            Card card2 = testPack.get(i + 1);
+            Card card3 = testPack.get(i + 2);
+            Card card4 = testPack.get(i + 3);
+            Card card5 = testPack.get(i + 4);
+            Card card6 = testPack.get(i + 5);
+
+            testPlayer1.addCardToHand(card1);
+            testPlayer2.addCardToHand(card2);
+            testPlayer3.addCardToHand(card3);
+            Deck1.addCard(card4);
+            Deck2.addCard(card5);
+            Deck3.addCard(card6);
+        }
+
+        //start player threads
+        testPlayer1.start();
+        testPlayer2.start();
+        testPlayer3.start();
+
+        //check if one of the threads has won
+        boolean done = false;
+        while(!done)
+        {
+            Thread.sleep(100);
+            int counter = 0;
+            for (boolean flag : flags)
+            {
+                if (flag)
+                {
+                    done = true;
+                    testPlayer1.stopThread(counter);
+                    testPlayer2.stopThread(counter);
+                    testPlayer3.stopThread(counter);
+                }
+                counter++;
+            }
+
+        }
+
+        for (boolean flag : flags)
+        {
+            System.out.println(flag);
+        }
+        assertTrue(flags[0] || flags[1] || flags[2]); // make sure flag array is changed if won
+    }
+
+
+    @Test
     void getDrawDeck() {
-        //set up player
         Deck dropDeck = new Deck("2");
         Deck drawDeck = new Deck("1");
         boolean[] flags = {true};
         Player testPlayer = new Player(1, drawDeck, dropDeck, flags);
 
-        //make sure correct object
         assert(testPlayer.getDrawDeck() == drawDeck);
     }
 
@@ -31,7 +110,6 @@ class PlayerTest {
         boolean[] flags = {true};
         Player testPlayer = new Player(1, drawDeck, dropDeck, flags);
 
-        //make sure correct object
         assert(testPlayer.getDropDeck() == dropDeck);
     }
 
@@ -159,16 +237,15 @@ class PlayerTest {
 
     }
 
-    @Test
-    void run() {
 
-    }
+
 
     @Test
     void stopThread() throws FileNotFoundException {
         // setting up test player and cards
         Deck dropDeck = new Deck("2");
         Deck drawDeck = new Deck("1");
+
         boolean[] flags = {false};
         Player testPlayer = new Player(1, drawDeck, dropDeck, flags);
 
