@@ -5,13 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5ec88d47-e3d9-4cdf-9870-1fcf2f9203a5" name="Changes" comment="finishing tests of player">
-      <change afterPath="$PROJECT_DIR$/testpack.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/deck1_output.txt" beforeDir="false" afterPath="$PROJECT_DIR$/deck1_output.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/deck2_output.txt" beforeDir="false" afterPath="$PROJECT_DIR$/deck2_output.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/deck3_output.txt" beforeDir="false" afterPath="$PROJECT_DIR$/deck3_output.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/player3_output.txt" beforeDir="false" afterPath="$PROJECT_DIR$/player3_output.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CardGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CardGame.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PlayerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PlayerTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -128,7 +121,14 @@
       <option name="project" value="LOCAL" />
       <updated>1700876201524</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="finishing tests of player">
+      <created>1700934769389</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1700934769389</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">

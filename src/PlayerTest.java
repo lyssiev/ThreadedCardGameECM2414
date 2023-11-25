@@ -10,12 +10,6 @@ import static org.junit.jupiter.api.Assertions.*;
 class PlayerTest {
 
     @Test
-    void Player()
-    {
-
-    }
-
-    @Test
     void run() throws FileNotFoundException, InterruptedException {
         //set up pack
         ArrayList<Card> testPack = new ArrayList<Card>();
