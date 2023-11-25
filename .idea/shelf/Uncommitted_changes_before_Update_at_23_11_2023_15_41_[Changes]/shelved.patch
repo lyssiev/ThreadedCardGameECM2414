@@ -1,0 +1,102 @@
+Index: src/Deck.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import java.io.FileWriter;\r\nimport java.io.IOException;\r\nimport java.util.ArrayList;\r\n\r\npublic class Deck{\r\n    private ArrayList<Card> cards;\r\n    private String name;\r\n    private String deckLogFilename;\r\n    public Deck(String name)\r\n    {\r\n        this.cards = new ArrayList<Card>();\r\n        this.name = name;\r\n        deckLogFilename = \"deck\"+ (name) + \"_output.txt\";\r\n    }\r\n\r\n    public String getName() {\r\n        return name;\r\n    }\r\n\r\n    public ArrayList<Card> getDeck()\r\n    {\r\n        return cards;\r\n    }\r\n\r\n    public synchronized void addCard(Card card)\r\n    {\r\n        this.cards.add(card);\r\n    }\r\n\r\n    public int getNumberOfCards()\r\n    {\r\n        return cards.size();\r\n    }\r\n\r\n    public synchronized void removeCard(int index)\r\n    {\r\n        cards.remove(index);\r\n    }\r\n\r\n    public synchronized Card getCard(int index){\r\n        return cards.get(index);\r\n    }\r\n\r\n    public void writeToLog(){\r\n        try {\r\n            FileWriter writer = new FileWriter(deckLogFilename, false);\r\n            String message = \"Deck \"+ name + \" contents: \";\r\n            for (Card deckCard : cards){\r\n                message += Integer.toString(deckCard.getValue()) + \" \";\r\n            }\r\n            writer.write(message + \"\\n\");\r\n            writer.close();\r\n        } catch (IOException e) {\r\n            System.out.println(\"Error.\");\r\n        }\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/Deck.java b/src/Deck.java
+--- a/src/Deck.java	(revision 9715d2edce3350a055d2da458599c06d9ae3db34)
++++ b/src/Deck.java	(date 1700500083301)
+@@ -3,6 +3,7 @@
+ import java.util.ArrayList;
+ 
+ public class Deck{
++
+     private ArrayList<Card> cards;
+     private String name;
+     private String deckLogFilename;
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"5ec88d47-e3d9-4cdf-9870-1fcf2f9203a5\" name=\"Changes\" comment=\"added threading and made card game\">\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/Card.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/Card.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/CardGame.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/CardGame.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/Deck.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/Deck.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/Player.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/Player.java\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"Class\" />\r\n        <option value=\"JUnit5 Test Class\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"MarkdownSettingsMigration\">\r\n    <option name=\"stateVersion\" value=\"1\" />\r\n  </component>\r\n  <component name=\"ProjectId\" id=\"2XrOJ4XP4bUgmoy3RHgmS07R6i8\" />\r\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\" />\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\">{\r\n  &quot;keyToString&quot;: {\r\n    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;false&quot;,\r\n    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,\r\n    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,\r\n    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,\r\n    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,\r\n    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,\r\n    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,\r\n    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,\r\n    &quot;create.test.in.the.same.root&quot;: &quot;true&quot;,\r\n    &quot;settings.editor.selected.configurable&quot;: &quot;org.jetbrains.plugins.github.ui.GithubSettingsConfigurable&quot;\r\n  }\r\n}</component>\r\n  <component name=\"RecentsManager\">\r\n    <key name=\"CreateTestDialog.Recents.Supers\">\r\n      <recent name=\"\" />\r\n    </key>\r\n    <key name=\"CreateTestDialog.RecentsKey\">\r\n      <recent name=\"\" />\r\n    </key>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"5ec88d47-e3d9-4cdf-9870-1fcf2f9203a5\" name=\"Changes\" comment=\"\" />\r\n      <created>1699383661461</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1699383661461</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00001\" summary=\"testing github\">\r\n      <created>1699384125520</created>\r\n      <option name=\"number\" value=\"00001\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1699384125520</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00002\" summary=\"Creating first attempt at classes\">\r\n      <created>1699386503864</created>\r\n      <option name=\"number\" value=\"00002\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00002\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1699386503864</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00003\" summary=\"Creating first attempt at classes\">\r\n      <created>1699388947038</created>\r\n      <option name=\"number\" value=\"00003\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00003\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1699388947038</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00004\" summary=\"testing again\">\r\n      <created>1700042690754</created>\r\n      <option name=\"number\" value=\"00004\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00004\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1700042690754</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00005\" summary=\"added threading and made card game\">\r\n      <created>1700056317852</created>\r\n      <option name=\"number\" value=\"00005\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00005\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1700056317852</updated>\r\n    </task>\r\n    <option name=\"localTasksCounter\" value=\"6\" />\r\n    <servers />\r\n  </component>\r\n  <component name=\"Vcs.Log.Tabs.Properties\">\r\n    <option name=\"TAB_STATES\">\r\n      <map>\r\n        <entry key=\"MAIN\">\r\n          <value>\r\n            <State />\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <MESSAGE value=\"testing github\" />\r\n    <MESSAGE value=\"Creating first attempt at classes\" />\r\n    <MESSAGE value=\"testing again\" />\r\n    <MESSAGE value=\"added threading and made card game\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"added threading and made card game\" />\r\n  </component>\r\n  <component name=\"XDebuggerManager\">\r\n    <breakpoint-manager>\r\n      <breakpoints>\r\n        <breakpoint enabled=\"true\" type=\"java-exception\">\r\n          <properties class=\"java.lang.IllegalMonitorStateException\" package=\"java.lang\" />\r\n          <option name=\"timeStamp\" value=\"6\" />\r\n        </breakpoint>\r\n        <breakpoint enabled=\"true\" type=\"java-exception\">\r\n          <properties class=\"java.util.ConcurrentModificationException\" package=\"java.util\" />\r\n          <option name=\"timeStamp\" value=\"7\" />\r\n        </breakpoint>\r\n      </breakpoints>\r\n    </breakpoint-manager>\r\n  </component>\r\n  <component name=\"com.intellij.coverage.CoverageDataManagerImpl\">\r\n    <SUITE FILE_PATH=\"coverage/ThreadedCardGame$CardGame.ic\" NAME=\"CardGame Coverage Results\" MODIFIED=\"1700055937770\" SOURCE_PROVIDER=\"com.intellij.coverage.DefaultCoverageFileProvider\" RUNNER=\"idea\" COVERAGE_BY_TEST_ENABLED=\"false\" COVERAGE_TRACING_ENABLED=\"false\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision 9715d2edce3350a055d2da458599c06d9ae3db34)
++++ b/.idea/workspace.xml	(date 1700501051451)
+@@ -4,12 +4,9 @@
+     <option name="autoReloadType" value="SELECTIVE" />
+   </component>
+   <component name="ChangeListManager">
+-    <list default="true" id="5ec88d47-e3d9-4cdf-9870-1fcf2f9203a5" name="Changes" comment="added threading and made card game">
++    <list default="true" id="5ec88d47-e3d9-4cdf-9870-1fcf2f9203a5" name="Changes" comment="fixed card dealing issues">
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/Card.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Card.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/CardGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CardGame.java" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/src/Deck.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Deck.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Player.java" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -26,6 +23,19 @@
+   </component>
+   <component name="Git.Settings">
+     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
++  </component>
++  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
++  "lastFilter": {
++    "state": "OPEN"
++  }
++}]]></component>
++  <component name="GithubPullRequestsUISettings">
++    <option name="selectedUrlAndAccountId">
++      <UrlAndAccount>
++        <option name="accountId" value="479614f0-1093-4a55-81c2-b7e3e415560c" />
++        <option name="url" value="https://github.com/lyssiev/ThreadedCardGameECM2414.git" />
++      </UrlAndAccount>
++    </option>
+   </component>
+   <component name="MarkdownSettingsMigration">
+     <option name="stateVersion" value="1" />
+@@ -102,7 +112,28 @@
+       <option name="project" value="LOCAL" />
+       <updated>1700056317852</updated>
+     </task>
+-    <option name="localTasksCounter" value="6" />
++    <task id="LOCAL-00006" summary="added threading and made card game">
++      <created>1700499684279</created>
++      <option name="number" value="00006" />
++      <option name="presentableId" value="LOCAL-00006" />
++      <option name="project" value="LOCAL" />
++      <updated>1700499684279</updated>
++    </task>
++    <task id="LOCAL-00007" summary="fixed card dealing issues">
++      <created>1700499718053</created>
++      <option name="number" value="00007" />
++      <option name="presentableId" value="LOCAL-00007" />
++      <option name="project" value="LOCAL" />
++      <updated>1700499718053</updated>
++    </task>
++    <task id="LOCAL-00008" summary="fixed card dealing issues">
++      <created>1700499781201</created>
++      <option name="number" value="00008" />
++      <option name="presentableId" value="LOCAL-00008" />
++      <option name="project" value="LOCAL" />
++      <updated>1700499781201</updated>
++    </task>
++    <option name="localTasksCounter" value="9" />
+     <servers />
+   </component>
+   <component name="Vcs.Log.Tabs.Properties">
+@@ -121,7 +152,8 @@
+     <MESSAGE value="Creating first attempt at classes" />
+     <MESSAGE value="testing again" />
+     <MESSAGE value="added threading and made card game" />
+-    <option name="LAST_COMMIT_MESSAGE" value="added threading and made card game" />
++    <MESSAGE value="fixed card dealing issues" />
++    <option name="LAST_COMMIT_MESSAGE" value="fixed card dealing issues" />
+   </component>
+   <component name="XDebuggerManager">
+     <breakpoint-manager>

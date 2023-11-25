@@ -78,10 +78,6 @@ class PlayerTest {
 
         }
 
-        for (boolean flag : flags)
-        {
-            System.out.println(flag);
-        }
         assertTrue(flags[0] || flags[1] || flags[2]); // make sure flag array is changed if won
     }
 
