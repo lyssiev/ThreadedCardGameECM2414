@@ -5,19 +5,24 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class CardGame {
+    //defining attributes:
     static int numberOfPlayers = 0;
     public static ArrayList<Deck> decks = new ArrayList<Deck>();
     public static ArrayList<Player> players = new ArrayList<Player>();;
-    public static ArrayList<Card> pack = new ArrayList<Card>();;
-    public static boolean[] flags;
+    public static ArrayList<Card> pack = new ArrayList<Card>();
+    public static boolean[] flags; //a boolean list, one for each player, to track whether a player has won yet
+
+
     public static void main(String[] args) {
         setUpGame();
 
+        //starts threads
         for(Player player : players)
         {
             player.start();
         }
 
+        //checks to see if a player has won
         int gameFlag = gameOver(flags);
         try {
             while(gameFlag == -1){
@@ -40,10 +45,12 @@ public class CardGame {
 
     }
 
+    //creates all the necessary game objects
     public static void setUpGame()
     {
         Boolean valid = false;
 
+        //loops ensure the game only runs with a valid number of players and valid pack file
         while (!valid)
         {
             Scanner scanner1 = new Scanner(System.in);
@@ -100,6 +107,7 @@ public class CardGame {
             }
         }
 
+
         flags = new boolean[numberOfPlayers];
 
         Pack packObject = new Pack(numberOfPlayers, cardList);
@@ -110,6 +118,8 @@ public class CardGame {
         dealHands();
         dealDecks();
     }
+
+    //checks to see if a flag has been set to true - if so, that player has won
     private static int gameOver(boolean[] flags) {
         int counter = 0;
         for (boolean flag : flags) {
@@ -120,6 +130,8 @@ public class CardGame {
         }
         return -1;
     }
+
+    //creates the Deck objects
     public static void makeDecks()
     {
         for(int i=1; i <= numberOfPlayers; i++)
@@ -131,13 +143,14 @@ public class CardGame {
     }
 
 
+    //Creates the Player objects and assigns the Decks they draw from and drop to
     public static void makePlayers()
     {
         for(int i=1; i <= numberOfPlayers; i++)
         {
             Deck drawDeck = decks.get(i-1);
             Deck dropDeck;
-            if (i == numberOfPlayers)
+            if (i == numberOfPlayers) //The last player in the circle drops cards to the first deck
             {
                 dropDeck = decks.get(0);
             }
@@ -150,10 +163,11 @@ public class CardGame {
         }
     }
 
+    //Deals cards to the players from the pack
     public static void dealHands()
     {
         int counter = 0;
-        for (int i=0; i < (numberOfPlayers * 4) ; i++ )
+        for (int i=0; i < (numberOfPlayers * 4) ; i++ ) //each Player has 4 cards in hand, so 4 * number of players cards are dealt
         {
             players.get(counter).addCardToHand(pack.get(1));
             pack.remove(pack.get(1));
@@ -165,10 +179,11 @@ public class CardGame {
         }
     }
 
+    //Deals remaining cards to the Decks from the pack
     public static void dealDecks()
     {
         int counter = 0;
-        for (int i=0; i < (numberOfPlayers * 4) ; i++ )
+        for (int i=0; i < (numberOfPlayers * 4) ; i++ ) //each Deck starts with 4 cards, so 4 * number of players cards are dealt
         {
             decks.get(counter).addCard(pack.get(i));
             counter++;
