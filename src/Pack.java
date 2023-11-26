@@ -5,6 +5,8 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 public class Pack {
     private ArrayList<Card> cards = new ArrayList<Card>();
+
+    //Constructor
     public Pack(int n, ArrayList<Card> cards) {
         this.cards = cards;
         this.shuffle();
@@ -14,6 +16,8 @@ public class Pack {
         return cards;
     }
 
+
+    //shuffles the pack
     private void shuffle()
     {
         for (int i = cards.size() - 1; i > 0; i--)
