@@ -45,6 +45,15 @@ public class CardGame {
 
     }
 
+    //resets all the game values
+    public static void clearGame(){
+        decks.clear();
+        players.clear();
+        pack.clear();
+        numberOfPlayers = 0;
+        flags = new boolean[]{};
+    }
+
     //creates all the necessary game objects
     public static void setUpGame()
     {
@@ -166,6 +175,7 @@ public class CardGame {
     //Deals cards to the players from the pack
     public static void dealHands()
     {
+
         int counter = 0;
         for (int i=0; i < (numberOfPlayers * 4) ; i++ ) //each Player has 4 cards in hand, so 4 * number of players cards are dealt
         {

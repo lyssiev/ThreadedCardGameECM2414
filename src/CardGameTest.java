@@ -1,33 +1,49 @@
 import org.junit.jupiter.api.Test;
 
+import java.io.ByteArrayInputStream;
+import java.io.FileNotFoundException;
 import java.io.StringWriter;
 import java.lang.reflect.*;
+import java.util.ArrayList;
+import java.io.File;
+import java.util.Scanner;
+import java.io.FileNotFoundException;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class CardGameTest {
 
     //@Test
-    //void main() {
+    //void setUpGame() {
+    //    CardGame testGame = new CardGame();
+    //    setInput("3" + "\n pack1.txt");
+    //    testGame.setUpGame();
+    //    assert(testGame.players != null && testGame.decks != null);
+
     //}
 
-    //@Test
-    //void setUpGame() {
-    //StringWriter output = new StringWriter();
-    //String input = "3 \n" + "pack1.txt \n";
-    //}
+    void setInput(String input){
+        ByteArrayInputStream testInput = new ByteArrayInputStream(input.getBytes());
+        System.setIn(testInput);
+    }
 
     @Test
     void makeDecks() {
         CardGame testGame = new CardGame();
+        testGame.clearGame();
+        boolean[] testFlags = {false, false, false};
+        testGame.flags = testFlags;
+        testGame.numberOfPlayers = 3;
         testGame.makeDecks();
-        assert(testGame.decks != null);
+
+        assert(testGame.decks.size() == testGame.numberOfPlayers);
 
     }
 
     @Test
     void makePlayers() {
         CardGame testGame = new CardGame();
+        testGame.clearGame();
         boolean[] testFlags = {false, false, false};
         testGame.flags = testFlags;
         testGame.numberOfPlayers = 3;
@@ -38,13 +54,25 @@ class CardGameTest {
     }
 
     @Test
-    void dealHands() {
+    void dealHands() throws FileNotFoundException{
         CardGame testGame = new CardGame();
+        testGame.clearGame();
         boolean[] testFlags = {false, false, false};
         testGame.flags = testFlags;
         testGame.numberOfPlayers = 3;
         testGame.makeDecks();
         testGame.makePlayers();
+
+        ArrayList<Card> testPack = new ArrayList<Card>();
+        File packFile = new File("pack1.txt");
+        Scanner scanner = new Scanner(packFile);
+        while (scanner.hasNextLine()) {
+            int value = Integer.parseInt(scanner.nextLine());
+            Card card = new Card(value);
+            testPack.add(card);
+        }
+        scanner.close();
+        testGame.pack = testPack;
 
         testGame.dealHands();
 
@@ -53,13 +81,26 @@ class CardGameTest {
     }
 
     @Test
-    void dealDecks() {
+    void dealDecks() throws FileNotFoundException {
         CardGame testGame = new CardGame();
+        testGame.clearGame();
         boolean[] testFlags = {false, false, false};
         testGame.flags = testFlags;
         testGame.numberOfPlayers = 3;
         testGame.makeDecks();
         testGame.makePlayers();
+
+        ArrayList<Card> testPack = new ArrayList<Card>();
+        File packFile = new File("pack1.txt");
+        Scanner scanner = new Scanner(packFile);
+        while (scanner.hasNextLine()) {
+            int value = Integer.parseInt(scanner.nextLine());
+            Card card = new Card(value);
+            testPack.add(card);
+        }
+        scanner.close();
+        testGame.pack = testPack;
+
         testGame.dealHands();
         testGame.dealDecks();
 
