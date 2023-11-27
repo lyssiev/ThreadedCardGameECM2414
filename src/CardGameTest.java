@@ -1,11 +1,8 @@
 import org.junit.jupiter.api.Test;
 
-import java.io.ByteArrayInputStream;
-import java.io.FileNotFoundException;
-import java.io.StringWriter;
+import java.io.*;
 import java.lang.reflect.*;
 import java.util.ArrayList;
-import java.io.File;
 import java.util.Scanner;
 import java.io.FileNotFoundException;
 
@@ -13,17 +10,21 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class CardGameTest {
 
-    //@Test
-    //void setUpGame() {
-    //    CardGame testGame = new CardGame();
-    //    setInput("3" + "\n pack1.txt");
-    //    testGame.setUpGame();
-    //    assert(testGame.players != null && testGame.decks != null);
+    @Test
+    void setUpGame() {
+        CardGame testGame = new CardGame();
+        testGame.clearGame();
+        setInput("3\n", "pack1.txt");
+        testGame.setUpGame();
+        assert(testGame.players.get(0).getHand().size() == 4 && testGame.decks.get(0).getDeck().size() == 4 && testGame.players.size() == 3);
 
-    //}
+    }
 
-    void setInput(String input){
-        ByteArrayInputStream testInput = new ByteArrayInputStream(input.getBytes());
+    //Creates an arbitrary input stream to test our methods
+    void setInput(String input1, String input2){
+        ByteArrayInputStream testInput1 = new ByteArrayInputStream(input1.getBytes());
+        ByteArrayInputStream testInput2 = new ByteArrayInputStream(input2.getBytes());
+        SequenceInputStream testInput = new SequenceInputStream(testInput1, testInput2);
         System.setIn(testInput);
     }
 
