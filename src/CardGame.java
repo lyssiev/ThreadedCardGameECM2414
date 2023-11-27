@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 public class CardGame {
     //defining attributes:
-    static int numberOfPlayers = 0;
+    public static int numberOfPlayers = 0;
     public static ArrayList<Deck> decks = new ArrayList<Deck>();
     public static ArrayList<Player> players = new ArrayList<Player>();;
     public static ArrayList<Card> pack = new ArrayList<Card>();
