@@ -1,16 +1,14 @@
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 import java.io.*;
-import java.lang.reflect.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.io.FileNotFoundException;
 
-import static org.junit.jupiter.api.Assertions.*;
 
-class CardGameTest {
+public class CardGameTest {
 
     @Test
-    void setUpGame() {
+    public void setUpGame() {
         CardGame testGame = new CardGame();
         testGame.clearGame();
         setInput("3\n", "pack1.txt");
@@ -20,7 +18,7 @@ class CardGameTest {
     }
 
     //Creates an arbitrary input stream to test our methods
-    void setInput(String input1, String input2){
+    public void setInput(String input1, String input2){
         ByteArrayInputStream testInput1 = new ByteArrayInputStream(input1.getBytes());
         ByteArrayInputStream testInput2 = new ByteArrayInputStream(input2.getBytes());
         SequenceInputStream testInput = new SequenceInputStream(testInput1, testInput2);
@@ -28,7 +26,7 @@ class CardGameTest {
     }
 
     @Test
-    void makeDecks() {
+    public void makeDecks() {
         CardGame testGame = new CardGame();
         testGame.clearGame();
         boolean[] testFlags = {false, false, false};
@@ -41,7 +39,7 @@ class CardGameTest {
     }
 
     @Test
-    void makePlayers() {
+    public void makePlayers() {
         CardGame testGame = new CardGame();
         testGame.clearGame();
         boolean[] testFlags = {false, false, false};
@@ -54,7 +52,7 @@ class CardGameTest {
     }
 
     @Test
-    void dealHands() throws FileNotFoundException{
+    public void dealHands() throws FileNotFoundException{
         CardGame testGame = new CardGame();
         testGame.clearGame();
         boolean[] testFlags = {false, false, false};
@@ -81,7 +79,7 @@ class CardGameTest {
     }
 
     @Test
-    void dealDecks() throws FileNotFoundException {
+    public void dealDecks() throws FileNotFoundException {
         CardGame testGame = new CardGame();
         testGame.clearGame();
         boolean[] testFlags = {false, false, false};

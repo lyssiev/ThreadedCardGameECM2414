@@ -4,7 +4,22 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5ec88d47-e3d9-4cdf-9870-1fcf2f9203a5" name="Changes" comment="adding comments to deck, player and card" />
+    <list default="true" id="5ec88d47-e3d9-4cdf-9870-1fcf2f9203a5" name="Changes" comment="CardGame Tests 3">
+      <change afterPath="$PROJECT_DIR$/src/TestSuite.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ThreadedCardGame.iml" beforeDir="false" afterPath="$PROJECT_DIR$/ThreadedCardGame.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/deck1_output.txt" beforeDir="false" afterPath="$PROJECT_DIR$/deck1_output.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/deck2_output.txt" beforeDir="false" afterPath="$PROJECT_DIR$/deck2_output.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/deck3_output.txt" beforeDir="false" afterPath="$PROJECT_DIR$/deck3_output.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/player1_output.txt" beforeDir="false" afterPath="$PROJECT_DIR$/player1_output.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/player2_output.txt" beforeDir="false" afterPath="$PROJECT_DIR$/player2_output.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/player3_output.txt" beforeDir="false" afterPath="$PROJECT_DIR$/player3_output.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/CardGameTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CardGameTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/CardTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CardTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DeckTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DeckTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PackTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PackTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PlayerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PlayerTest.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -15,6 +30,7 @@
       <list>
         <option value="JUnit5 Test Class" />
         <option value="Class" />
+        <option value="JUnit4 Test Class" />
       </list>
     </option>
   </component>
@@ -23,9 +39,6 @@
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
-  </component>
-  <component name="ProblemsViewState">
-    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectId" id="2XrOJ4XP4bUgmoy3RHgmS07R6i8" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -43,51 +56,50 @@
     "Repository.Attach.Sources": "false",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit4",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4": "",
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
     "create.test.in.the.same.root": "true",
-    "last_opened_file_path": "C:/Users/alyss/Downloads/junit-jupiter-engine-5.10.1.jar",
-    "project.structure.last.edited": "Libraries",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
-    "settings.editor.selected.configurable": "preferences.intentionPowerPack"
+    "settings.editor.selected.configurable": "preferences.pluginManager"
+  },
+  "keyToStringList": {
+    "com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File": [
+      "JAVA"
+    ]
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
     </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\alyss\Documents\Programming Uni\ThreadedCardGame" />
-      <recent name="C:\Users\alyss\Documents\Programming Uni\ThreadedCardGame\src" />
-    </key>
     <key name="CreateTestDialog.RecentsKey">
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.All in ThreadedCardGame">
-    <configuration name="All in ThreadedCardGame" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager">
+    <configuration name="CardGameTest.makePlayers" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="ThreadedCardGame" />
       <option name="PACKAGE_NAME" value="" />
-      <option name="TEST_OBJECT" value="package" />
+      <option name="MAIN_CLASS_NAME" value="CardGameTest" />
+      <option name="METHOD_NAME" value="makePlayers" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="PlayerTest.run" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="DeckTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="ThreadedCardGame" />
       <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="PlayerTest" />
-      <option name="METHOD_NAME" value="run" />
-      <option name="TEST_OBJECT" value="method" />
+      <option name="MAIN_CLASS_NAME" value="DeckTest" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.All in ThreadedCardGame" />
-        <item itemvalue="JUnit.PlayerTest.run" />
+        <item itemvalue="JUnit.DeckTest" />
+        <item itemvalue="JUnit.CardGameTest.makePlayers" />
       </list>
     </recent_temporary>
   </component>
@@ -135,54 +147,54 @@
       <option name="project" value="LOCAL" />
       <updated>1700056317852</updated>
     </task>
-    <task id="LOCAL-00006" summary="testing player">
-      <created>1700755499948</created>
+    <task id="LOCAL-00006" summary="cardgame comments">
+      <created>1701036084621</created>
       <option name="number" value="00006" />
       <option name="presentableId" value="LOCAL-00006" />
       <option name="project" value="LOCAL" />
-      <updated>1700755499948</updated>
+      <updated>1701036084621</updated>
     </task>
-    <task id="LOCAL-00007" summary="finishing tests of player">
-      <created>1700876201524</created>
+    <task id="LOCAL-00007" summary="Pack comments">
+      <created>1701036942730</created>
       <option name="number" value="00007" />
       <option name="presentableId" value="LOCAL-00007" />
       <option name="project" value="LOCAL" />
-      <updated>1700876201524</updated>
+      <updated>1701036942730</updated>
     </task>
-    <task id="LOCAL-00008" summary="finishing tests of player">
-      <created>1700934769389</created>
+    <task id="LOCAL-00008" summary="CardGame Tests 1">
+      <created>1701103220157</created>
       <option name="number" value="00008" />
       <option name="presentableId" value="LOCAL-00008" />
       <option name="project" value="LOCAL" />
-      <updated>1700934769389</updated>
+      <updated>1701103220157</updated>
     </task>
-    <task id="LOCAL-00009" summary="finishing tests of player">
-      <created>1700934805494</created>
+    <task id="LOCAL-00009" summary="CardGame Tests 1">
+      <created>1701103262853</created>
       <option name="number" value="00009" />
       <option name="presentableId" value="LOCAL-00009" />
       <option name="project" value="LOCAL" />
-      <updated>1700934805494</updated>
+      <updated>1701103262853</updated>
     </task>
-    <task id="LOCAL-00010" summary="adding comments to deck, player and card">
-      <created>1700936599106</created>
+    <task id="LOCAL-00010" summary="CardGame Tests 2">
+      <created>1701108481344</created>
       <option name="number" value="00010" />
       <option name="presentableId" value="LOCAL-00010" />
       <option name="project" value="LOCAL" />
-      <updated>1700936599106</updated>
+      <updated>1701108481344</updated>
     </task>
-    <task id="LOCAL-00011" summary="adding comments to deck, player and card">
-      <created>1700954097933</created>
+    <task id="LOCAL-00011" summary="CardGame Tests 3">
+      <created>1701114710220</created>
       <option name="number" value="00011" />
       <option name="presentableId" value="LOCAL-00011" />
       <option name="project" value="LOCAL" />
-      <updated>1700954097933</updated>
+      <updated>1701114710221</updated>
     </task>
-    <task id="LOCAL-00012" summary="adding comments to deck, player and card">
-      <created>1700954494035</created>
+    <task id="LOCAL-00012" summary="CardGame Tests 3">
+      <created>1701190833653</created>
       <option name="number" value="00012" />
       <option name="presentableId" value="LOCAL-00012" />
       <option name="project" value="LOCAL" />
-      <updated>1700954494035</updated>
+      <updated>1701190833653</updated>
     </task>
     <option name="localTasksCounter" value="13" />
     <servers />
@@ -203,10 +215,12 @@
     <MESSAGE value="Creating first attempt at classes" />
     <MESSAGE value="testing again" />
     <MESSAGE value="added threading and made card game" />
-    <MESSAGE value="testing player" />
-    <MESSAGE value="finishing tests of player" />
-    <MESSAGE value="adding comments to deck, player and card" />
-    <option name="LAST_COMMIT_MESSAGE" value="adding comments to deck, player and card" />
+    <MESSAGE value="cardgame comments" />
+    <MESSAGE value="Pack comments" />
+    <MESSAGE value="CardGame Tests 1" />
+    <MESSAGE value="CardGame Tests 2" />
+    <MESSAGE value="CardGame Tests 3" />
+    <option name="LAST_COMMIT_MESSAGE" value="CardGame Tests 3" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -220,14 +234,13 @@
           <option name="timeStamp" value="7" />
         </breakpoint>
         <breakpoint enabled="true" type="java-exception">
-          <properties class="java.lang.IndexOutOfBoundsException" package="java.lang" />
-          <option name="timeStamp" value="8" />
+          <properties class="java.lang.AssertionError" package="java.lang" />
+          <option name="timeStamp" value="10" />
         </breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/ThreadedCardGame$PlayerTest.ic" NAME="PlayerTest Coverage Results" MODIFIED="1700934864472" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
-    <SUITE FILE_PATH="coverage/ThreadedCardGame$CardGame.ic" NAME="CardGame Coverage Results" MODIFIED="1700915176092" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/ThreadedCardGame$CardGame.ic" NAME="CardGame Coverage Results" MODIFIED="1700055937770" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>

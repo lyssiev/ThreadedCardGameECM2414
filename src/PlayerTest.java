@@ -1,4 +1,4 @@
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -7,10 +7,10 @@ import java.util.Scanner;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class PlayerTest {
+public class PlayerTest {
 
     @Test
-    void run() throws FileNotFoundException, InterruptedException {
+    public void run() throws FileNotFoundException, InterruptedException {
         //set up pack
         ArrayList<Card> testPack = new ArrayList<Card>();
         File packFile = new File("pack1.txt");
@@ -87,7 +87,7 @@ class PlayerTest {
 
 
     @Test
-    void getDrawDeck() {
+    public void getDrawDeck() {
         Deck dropDeck = new Deck("2");
         Deck drawDeck = new Deck("1");
         boolean[] flags = {true};
@@ -97,7 +97,7 @@ class PlayerTest {
     }
 
     @Test
-    void getDropDeck() {
+    public void getDropDeck() {
         //set up player
         Deck dropDeck = new Deck("2");
         Deck drawDeck = new Deck("1");
@@ -108,7 +108,7 @@ class PlayerTest {
     }
 
     @Test
-    void addCardToHand() {
+    public void addCardToHand() {
         //set up player
         Deck dropDeck = new Deck("2");
         Deck drawDeck = new Deck("1");
@@ -124,7 +124,7 @@ class PlayerTest {
     }
 
     @Test
-    void writeToLog() throws FileNotFoundException {
+    public void writeToLog() throws FileNotFoundException {
 
         // set up player
         Deck dropDeck = new Deck("2");
@@ -151,7 +151,7 @@ class PlayerTest {
     }
 
     @Test
-    void checkWin() {
+    public void checkWin() {
         //set up player for false
         Deck dropDeck = new Deck("2");
         Deck drawDeck = new Deck("1");
@@ -194,7 +194,7 @@ class PlayerTest {
     }
 
     @Test
-    void getDiscardedCard() {
+    public void getDiscardedCard() {
 
 
         //setting up player
@@ -235,7 +235,7 @@ class PlayerTest {
 
 
     @Test
-    void stopThread() throws FileNotFoundException {
+    public void stopThread() throws FileNotFoundException {
         // setting up test player and cards
         Deck dropDeck = new Deck("2");
         Deck drawDeck = new Deck("1");
@@ -280,9 +280,9 @@ class PlayerTest {
             if (line.equals("player 1 exits")) {
                 foundExit = true;
             }
-           if (line.equals(finalHand)) {
+            if (line.equals(finalHand)) {
                 foundFinalHand = true;
-           }
+            }
         }
         scanner.close();
         assertTrue(foundWin && foundExit && foundFinalHand);

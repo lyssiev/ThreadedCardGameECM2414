@@ -1,19 +1,18 @@
-import org.junit.jupiter.api.Test;
-import java.lang.reflect.*;
+import org.junit.Test;
 import java.util.ArrayList;
 
-import static org.junit.jupiter.api.Assertions.*;
 
-class DeckTest {
+
+public class DeckTest {
 
     @Test
-    void getName() {
+    public void getName() {
         Deck testDeck = new Deck("1");
         assert(testDeck.getName() == "1");
     }
 
     @Test
-    void getDeck() {
+    public void getDeck() {
         Deck testDeck = new Deck("1");
         ArrayList<Card> testCards = new ArrayList<Card>();
         for (int i = 1; i < 5; i++){
@@ -26,7 +25,7 @@ class DeckTest {
     }
 
     @Test
-    void addCard() {
+    public void addCard() {
         Deck testDeck = new Deck("1");
         Card testCard = new Card(1);
         testDeck.addCard(testCard);
@@ -34,7 +33,7 @@ class DeckTest {
     }
 
     @Test
-    void removeCard() {
+    public void removeCard() {
         Deck testDeck = new Deck("1");
         Card testCard = new Card(1);
         testDeck.addCard(testCard);
@@ -43,12 +42,12 @@ class DeckTest {
     }
 
     @Test
-    void getCard() {
+    public void getCard() {
         Deck testDeck = new Deck("1");
         Card testCard = new Card(1);
         testDeck.addCard(testCard);
         assert(testDeck.getCard(0) == testCard);
     }
 
-    
+
 }

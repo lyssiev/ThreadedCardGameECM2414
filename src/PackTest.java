@@ -1,13 +1,12 @@
-import org.junit.jupiter.api.Test;
-import java.lang.reflect.*;
+import org.junit.Test;
+
 import java.util.ArrayList;
 
-import static org.junit.jupiter.api.Assertions.*;
+public class PackTest {
 
-class PackTest {
 
     @Test
-    void getCards() {
+    public void getCards() {
         ArrayList<Card> testCards = new ArrayList<Card>();
         for (int i=1; i<=24; i++ ){
             Card testCard = new Card(i);
@@ -18,7 +17,7 @@ class PackTest {
 
     }
     @Test
-    void setupPack() {
+    public void setupPack() {
         ArrayList<Card> testCards = new ArrayList<Card>();
         for (int i=1; i<=24; i++ ){
             Card testCard = new Card(i);
