@@ -1,1 +1,1 @@
-player 3 initial hand: 4 3 6 5 
+player 3 initial hand: 1 2 5 1 
