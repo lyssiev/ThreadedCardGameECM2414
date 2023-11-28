@@ -50,7 +50,5 @@ class DeckTest {
         assert(testDeck.getCard(0) == testCard);
     }
 
-    //@Test
-    //void writeToLog() {
-    //}
+    
 }
